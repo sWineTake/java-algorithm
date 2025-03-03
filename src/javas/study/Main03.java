@@ -1,15 +1,17 @@
 package javas.study;
 
-import java.util.*;
+import java.util.LinkedList;
+import java.util.Queue;
+import java.util.Scanner;
 
-public class Main {
+public class Main03 {
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         String a = scanner.next();
         String list = scanner.next();
 
-        Main m = new Main();
+        Main03 m = new Main03();
         m.solution(a, list);
     }
 
@@ -21,17 +23,18 @@ public class Main {
         }
 
         for (char x : list.toCharArray()) {
-            if (!queue.isEmpty() && queue.peek() == x) {
-                queue.poll();
+
+            Character peek = queue.peek();
+            if (peek == null) {
+                break;
             }
-            if (queue.isEmpty()) {
-                System.out.println("YES");
-                return;
+            if (peek == x) {
+                queue.poll();
             }
 
         }
 
-        System.out.println("NO");
+        String result = queue.isEmpty() ? "YES" : "NO";
+        System.out.println(result);
     }
-
 }
